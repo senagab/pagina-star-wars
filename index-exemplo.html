@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>StarWars</h1>
+
+	<h2>Filmes</h2>
+	<div id="filmes"></div>
+	<h2>Personagens</h2>
+	<div id="personagens">	</div>
+	<h2>Planetas</h2>
+	<script type="text/java">
+		var httpClient = new XMLHttpRequest();
+		var resposta;
+		httpClient.open('GET', 'https://swapi.co/api/films/');
+		httpClient.send()
+		httpClient.onreadystatechange = function() {
+				if(httpClient.readyState == 4) {
+						var divFilmes = document.querySelector("#filmes")
+						resposta = JSON.parse(httpClient.responseText)
+						var htmlFilmes = "";
+
+						for(var i = 0; i < resposta.results.length; i ++) {
+								htmlFilmes += resposta.results[i].title + "<br/>"
+						}
+
+						divFilmes.innerHTML = htmlFilmes
+				}
+		};
+
+		var httpClient2 = new XMLHttpRequest();
+		var resposta2;
+		httpClient2.open('GET', 'https://swapi.co/api/people/');
+		httpClient2.send()
+		httpClient2.onreadystatechange = function() {
+				if(httpClient2.readyState == 4) {
+						var divPersonagens = document.querySelector("#personagens")
+						resposta2 = JSON.parse(httpClient2.responseText)
+						var htmlPersonagens = "";
+
+						for(var i = 0; i < resposta2.results.length; i ++) {
+								htmlPersonagens += resposta2.results[i].name + "<br/>"
+						}
+
+						divPersonagens.innerHTML = htmlPersonagens
+				}
+		};
+
+		var httpClient = new XMLHttpRequest();
+		var resposta;
+		httpClient.open('GET', 'https://swapi.co/api/films/');
+		httpClient.send()
+		httpClient.onreadystatechange = function() {
+				if(httpClient.readyState == 4) {
+						var divFilmes = document.querySelector("#filmes")
+						resposta = JSON.parse(httpClient.responseText)
+						var htmlFilmes = "";
+
+						for(var i = 0; i < resposta.results.length; i ++) {
+								htmlFilmes += resposta.results[i].title + "<br/>"
+						}
+
+						divFilmes.innerHTML = htmlFilmes
+				}
+		};
+	</script>
+</body>
+</html>
